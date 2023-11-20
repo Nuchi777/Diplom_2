@@ -1,3 +1,7 @@
+class Urls:
+    URL_SB = 'https://stellarburgers.nomoreparties.site'
+
+
 class Endpoints:
     CREATE_USER = '/api/auth/register'
     LOGIN_USER = '/api/auth/login'
