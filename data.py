@@ -3,7 +3,7 @@ class Urls:
 
 
 class Endpoints:
-    REGISTRATION_USER = '/api/auth/register' #POST
+    REGISTER_USER = '/api/auth/register' #POST
     LOGIN_USER = '/api/auth/login' #POST
     UPDATE_USER = '/api/auth/user' #GET
     DELETE_USER = '/api/auth/user' #DELETE
