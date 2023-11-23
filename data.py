@@ -3,8 +3,9 @@ class Urls:
 
 
 class Endpoints:
-    CREATE_USER = '/api/auth/register'
-    LOGIN_USER = '/api/auth/login'
-    UPDATE_USER = '/api/auth/user'
-    CREATE_ORDER = '/api/orders'
-    GET_ORDERS_USER = '/api/orders'
+    REGISTRATION_USER = '/api/auth/register' #POST
+    LOGIN_USER = '/api/auth/login' #POST
+    UPDATE_USER = '/api/auth/user' #GET
+    DELETE_USER = '/api/auth/user' #DELETE
+    CREATE_ORDER = '/api/orders' #POST
+    GET_ORDERS_USER = '/api/orders' #GET
