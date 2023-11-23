@@ -12,7 +12,7 @@ def generate_random_string(length):
     return random_string
 
 
-def register_new_user():
+def register_new_user_return_login_pass_and_response():
     # создаём список, чтобы функция могла его вернуть
     login_pass = []
 

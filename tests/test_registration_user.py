@@ -18,9 +18,9 @@ class TestRegistrationUser:
         refresh_token = response.json()["refreshToken"]
         assert response.status_code == 200 and response.text == f'{{"success":true,"user":{{"email":"{email}","name":"{name}"}},"accessToken":"{access_token}","refreshToken":"{refresh_token}"}}'
 
-@allure.title('Создать уникального пользователя')
-    def test_registration_new_user(self, user):
-        data = user
+    @allure.title('создать пользователя, который уже зарегистрирован')
+    def test_registration_user_which_already_registered(self, register_new_user_return_login_pass):
+        data = register_new_user_return_login_pass
         email = data[0]
         password = data[1]
         name = data[2]
@@ -30,6 +30,4 @@ class TestRegistrationUser:
             "name": name
         }
         response = requests.post(f'{Urls.URL_SB}{Endpoints.REGISTRATION_USER}', data=payload)
-        access_token = response.json()["accessToken"]
-        refresh_token = response.json()["refreshToken"]
-        assert response.status_code == 200 and response.text == f'{{"success":true,"user":{{"email":"{email}","name":"{name}"}},"accessToken":"{access_token}","refreshToken":"{refresh_token}"}}'
+        assert response.status_code == 403 and response.text == f'{{"success":false,"message":"User already exists"}}'
