@@ -9,3 +9,4 @@ class Endpoints:
     DELETE_USER = '/api/auth/user' #DELETE
     CREATE_ORDER = '/api/orders' #POST
     GET_ORDERS_USER = '/api/orders' #GET
+    INGREDIENT_DATA = '/api/ingredients' #GET
