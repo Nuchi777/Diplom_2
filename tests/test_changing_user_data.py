@@ -1,8 +1,6 @@
 import allure
 import requests
-from faker import Faker
 from data import Urls, Endpoints
-from random import randint
 
 
 class TestChangingUserData:
