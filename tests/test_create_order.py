@@ -38,5 +38,14 @@ class TestCreateOrder:
         response = requests.post(f'{Urls.URL_SB}{Endpoints.CREATE_ORDER}', data=payload, headers={'Authorization': f'{access_token}'})
         assert response.status_code == 400 and response.text == '{"success":false,"message":"Ingredient ids must be provided"}'
 
+    @allure.title("Создание заказа с неверным хешем ингредиентов")
+    def test_create_order_invalid_ingredient_hash(self, register_new_user_return_response):
+        data = register_new_user_return_response
+        access_token = data.json()["accessToken"]
+        payload = {
+            "ingredients": ["60d3b41abdacab0026a733c6"]
+        }
+        response = requests.post(f'{Urls.URL_SB}{Endpoints.CREATE_ORDER}', data=payload, headers={'Authorization': f'{access_token}'})
+        assert response.status_code == 500
 
 
