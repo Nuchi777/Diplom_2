@@ -23,7 +23,7 @@ class TestChangingUserData:
     @pytest.mark.parametrize('payload_data',
                              [f'{{"name": "{faker.first_name()}"}}', f'{{"email": "{faker.free_email()}"}}'])
     @allure.title("Изменение данных пользователя без авторизации")
-    def test_changing_user_data_without_authorization(self, register_new_user_return_response, payload_data):
+    def test_changing_user_data_without_authorization(self, payload_data):
         payload = payload_data
         response = requests.patch(f'{Urls.URL_SB}{Endpoints.UPDATE_USER}', data=payload)
         assert response.status_code == 401 and response.text == '{"success":false,"message":"You should be authorised"}'

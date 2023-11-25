@@ -17,9 +17,7 @@ class TestCreateOrder:
         # в документации нет примера ответа для авторизованного пользователя
 
     @allure.title("Создание заказа без авторизации")
-    def test_create_order_without_authorization(self, register_new_user_return_response):
-        data = register_new_user_return_response
-        access_token = data.json()["accessToken"]
+    def test_create_order_without_authorization(self):
         payload = {
             "ingredients": ["61c0c5a71d1f82001bdaaa6d"]
         }
