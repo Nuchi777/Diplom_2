@@ -1,8 +1,8 @@
 import allure
+import pytest
 import requests
 from faker import Faker
-from data import Urls
-from data import Endpoints
+from data import Urls, Endpoints
 
 faker = Faker()
 
@@ -29,18 +29,16 @@ class TestRegistrationUser:
             "password": password,
             "name": name
         }
-        response = requests.post(f'{Urls.URL_SB}{Endpoints.REGISTRATION_USER}', data=payload)
+        response = requests.post(f'{Urls.URL_SB}{Endpoints.REGISTER_USER}', data=payload)
         assert response.status_code == 403 and response.text == f'{{"success":false,"message":"User already exists"}}'
 
+    @pytest.mark.parametrize('payload_param',
+                             [f'{{"email": "", "password": "qwerty123", "name": {faker.first_name()}',
+                              f'{{"email": {faker.free_email()}, "password": "", "name": {faker.first_name()}}}',
+                              f'{{"email": {faker.free_email()}, "password": "qwerty123", "name": ""}}'])
     @allure.title('Создать пользователя и не заполнить одно из обязательных полей.')
-    def test_register_user_not_fill_required_fields(self):
-        email = faker.free_email()
-        name = faker.first_name()
-        payload = {
-            "email": email,
-            "password": "",
-            "name": name
-        }
+    def test_register_user_not_fill_required_fields(self, payload_param):
+        payload = payload_param
         response = requests.post(f'{Urls.URL_SB}{Endpoints.REGISTER_USER}', data=payload)
         assert response.status_code == 403 and response.text == f'{{"success":false,"message":"Email, password and name are required fields"}}'
 

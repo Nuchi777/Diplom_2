@@ -12,7 +12,6 @@ def register_new_user_return_login_pass():
     requests.delete(f'{Urls.URL_SB}{Endpoints.DELETE_USER}', headers={'Authorization': f'{access_token}'})
 
 
-
 @pytest.fixture
 def register_new_user_return_response():
     data = register_new_user_return_login_pass_and_response()
