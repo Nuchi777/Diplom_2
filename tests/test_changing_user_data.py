@@ -15,8 +15,7 @@ class TestChangingUserData:
         data = register_new_user_return_response
         access_token = data.json()["accessToken"]
         payload = payload_data
-        response = requests.patch(f'{Urls.URL_SB}{Endpoints.UPDATE_USER}', data=payload,
-                                  headers={'Authorization': f'{access_token}'})
+        response = requests.patch(f'{Urls.URL_SB}{Endpoints.UPDATE_USER}', data=payload, headers={'Authorization': f'{access_token}'})
         email = response.json()["user"]["email"]
         name = response.json()["user"]["name"]
         assert response.status_code == 200 and response.text == f'{{"success":true,"user":{{"email":"{email}","name":"{name}"}}}}'
