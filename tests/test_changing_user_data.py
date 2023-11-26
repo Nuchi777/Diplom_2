@@ -27,3 +27,4 @@ class TestChangingUserData:
         payload = payload_data
         response = requests.patch(f'{Urls.URL_SB}{Endpoints.UPDATE_USER}', data=payload)
         assert response.status_code == 401 and response.text == '{"success":false,"message":"You should be authorised"}'
+
