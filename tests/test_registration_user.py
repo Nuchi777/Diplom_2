@@ -8,7 +8,7 @@ faker = Faker()
 
 
 class TestRegistrationUser:
-    @allure.suite("Создание пользователя:")
+
     @allure.title("Создать уникального пользователя")
     def test_register_new_user(self, register_new_user_return_response):
         response = register_new_user_return_response

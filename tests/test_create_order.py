@@ -4,7 +4,7 @@ from data import Urls, Endpoints
 
 
 class TestCreateOrder:
-    @allure.suite("Создание заказа:")
+
     @allure.title("Создание заказа с авторизацией")
     def test_create_order_with_authorization(self, register_new_user_return_response):
         data = register_new_user_return_response

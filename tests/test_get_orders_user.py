@@ -1,14 +1,10 @@
 import allure
 import requests
-from faker import Faker
 from data import Urls, Endpoints
-from random import randint
-
-faker = Faker()
 
 
 class TestGetOrdersUser:
-    @allure.suite("Получение заказов конкретного пользователя:")
+
     @allure.title("Получение заказов конкретного пользователя: авторизованный пользователь")
     def test_get_orders_user_with_authorization(self, register_new_user_return_response):
         data = register_new_user_return_response

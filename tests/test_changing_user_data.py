@@ -9,7 +9,6 @@ faker = Faker()
 
 class TestChangingUserData:
     @pytest.mark.parametrize('payload_data', [f'{{"name": "{faker.first_name()}"}}', f'{{"email": "{faker.free_email()}"}}'])
-    @allure.suite("Изменение данных пользователя:")
     @allure.title("Изменение данных пользователя с авторизацией")
     def test_changing_user_data_with_authorization(self, register_new_user_return_response, payload_data):
         data = register_new_user_return_response

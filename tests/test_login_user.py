@@ -8,7 +8,7 @@ faker = Faker()
 
 
 class TestLoginUser:
-    @allure.suite("Логин пользователя:")
+
     @allure.title("Логин под существующим пользователем")
     def test_login_registered_user(self, register_new_user_return_login_pass):
         data = register_new_user_return_login_pass
