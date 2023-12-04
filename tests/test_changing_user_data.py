@@ -8,6 +8,12 @@ faker = Faker()
 
 
 class TestChangingUserData:
+
+
+    """В классе TestChangingUserData я применил параметризацию, чтобы проверить,
+    что можно изменить поля "name" и "email", чтобы не создавать разные тесты."""
+
+
     @pytest.mark.parametrize('payload_data', [f'{{"name": "{faker.first_name()}"}}', f'{{"email": "{faker.free_email()}"}}'])
     @allure.title("Изменение данных пользователя с авторизацией")
     def test_changing_user_data_with_authorization(self, register_new_user_return_response, payload_data):
