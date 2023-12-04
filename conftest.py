@@ -1,6 +1,6 @@
 import pytest
 import requests
-from register_new_user import register_new_user_return_login_pass_and_response
+from api import register_new_user_return_login_pass_and_response
 from data import Urls, Endpoints
 
 

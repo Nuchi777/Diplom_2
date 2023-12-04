@@ -1,15 +1,9 @@
 import requests
-import random
-import string
 from faker import Faker
+from data import Urls, Endpoints
+from helpers import generate_random_string
 
 faker = Faker()
-
-
-def generate_random_string(length):
-    letters = string.ascii_lowercase
-    random_string = ''.join(random.choice(letters) for i in range(length))
-    return random_string
 
 
 def register_new_user_return_login_pass_and_response():
@@ -29,7 +23,7 @@ def register_new_user_return_login_pass_and_response():
     }
 
     # отправляем запрос на регистрацию нового пользователя и сохраняем ответ в переменную response
-    response = requests.post('https://stellarburgers.nomoreparties.site/api/auth/register', data=payload)
+    response = requests.post(f'{Urls.URL_SB}{Endpoints.REGISTER_USER}', data=payload)
 
     # если регистрация прошла успешно (код ответа 200), добавляем в список email, пароль и имя пользователя
     if response.status_code == 200:
